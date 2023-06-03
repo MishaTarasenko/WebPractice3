@@ -1,0 +1,427 @@
+.fullWindow{
+   background-color: rgb(218, 218, 218);
+}
+
+.fullForm{
+   height: 30%;
+   display:flex;
+   justify-content: center;
+   flex-direction: row;
+}
+
+.operationForm{
+   width: 67%;
+   background-color: rgb(255, 255, 255);
+   margin-top: 15px;
+   margin-right: 15px;
+   border-radius: 6px;
+}
+
+.statistic{
+   width: 30%;
+   background-color: rgb(255, 255, 255);
+   margin-top: 15px;
+   margin-left: 15px;
+   margin-right: 5px;
+   border-radius: 6px;
+}
+
+.additionForm{
+   height: 100px;
+   display: flex;
+   justify-content: center;
+   flex-direction: row;
+   border-bottom: 1px solid lightgray;
+}
+
+.productInput{
+   flex: 3;
+   width: 0;
+   margin-left: 15px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   border-radius: 4px;
+   border-width: 1px;
+   padding-left: 15px
+}
+
+.productInput.new{
+   width: 90%;
+   height: 70%;
+   font-size: 20px;
+   border-radius: 0;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   outline: none;
+}
+
+.productInput.new:focus{
+   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+   border: 1px solid rgb(0, 96, 122);
+}
+
+.addButton{
+   flex: 1;
+   position: relative;
+   margin-top: 20px;
+   margin-left: -5px;
+   margin-right: 15px;
+   margin-bottom: 20px;
+   border-top-right-radius: 4px;
+   border-bottom-right-radius: 4px;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   background-color: rgb(34, 133, 208);
+   box-shadow: 0px -6px rgb(34, 118, 183) inset;
+}
+
+.addLabel{
+   color: white;
+   font-size: 30px;
+   font-weight: 800;
+}
+
+.additionForm ::placeholder{
+   font-size: 25px;
+}
+
+.product{
+   height: 72px;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   justify-content: space-between;
+   border-bottom: 1px solid lightgray;
+}
+
+.product.three{
+   border-bottom: none;
+}
+
+.nameOfProduct{
+   width: 25%;
+}
+
+.buttonBlockOne{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   width: 25%;
+}
+
+.buttonBlockTwo{
+   display: flex;
+   flex-direction: row;
+   justify-content: right;
+   margin-right: 15px;
+   width: 25%;
+}
+
+.strikethroughInscription{
+   text-decoration: line-through;
+   font-family: sans-serif;
+   font-size: 25px;
+   padding-left: 20px
+}
+
+.blockOfAmount{
+   width: 48px;
+   line-height: 45px;
+   border-radius: 6px;
+   background-color: rgb(232, 232, 232);
+   padding: 0;
+   margin-left: 10px;
+   margin-right: 10px;
+   font-size: 20px;
+   font-weight: 700;
+   font-family: sans-serif;
+   color: rgb(95, 95, 95);
+   text-align: center;
+}
+
+.button{
+   width: 170px;
+   height: 52px;
+   position: relative;
+   border-radius: 6px;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   font-size: 20px;
+   font-family: sans-serif;
+   color: rgb(95, 95, 95);
+   font-weight: 600;
+   background-color: rgb(243, 243, 243);
+   box-shadow: 0px -4px rgb(200, 200, 202) inset;
+}
+
+.button.one{
+   width: 200px;
+}
+
+.label{
+   font-family: sans-serif;
+   font-size: 25px;
+   padding-left: 20px
+}
+
+
+.plusButton{
+   width: 48px;
+   line-height: 45px;
+   border-radius: 25px;
+   position: relative;
+   justify-content: center;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   font-size: 20px;
+   font-family: sans-serif;
+   color: white;
+   font-weight: 800;
+   text-align: center;
+   background-color: rgb(34, 186, 70);
+   box-shadow: 0px -4px rgb(33, 163, 64) inset;
+}
+
+.minusButton{
+   width: 48px;
+   line-height: 45px;
+   position: relative;
+   border-radius: 25px;
+   justify-content: center;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   font-size: 20px;
+   font-family: sans-serif;
+   color: white;
+   font-weight: 800;
+   text-align: center;
+   background-color: rgb(219, 40, 40);
+   box-shadow: 0px -4px rgb(191, 39, 40) inset;
+}
+
+.minusButton.three{
+   opacity: 0.6;
+}
+
+.minusButton:hover .tooltipSection,
+.plusButton:hover .tooltipSection,
+.cancelButton:hover .tooltipSection,
+.addButton:hover .tooltipSection,
+.button:hover .tooltipSection{
+  opacity: 1;
+  transform: translate(0, 0.15em);
+  transition: all .25s ease-in-out;
+}
+
+.cancelButton{
+   width: 50px;
+   height: 50px;
+   position: relative;
+   border-radius: 6px;
+   justify-content: center;
+   margin-left: 5px;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   font-size: 15px;
+   font-family: sans-serif;
+   color: white;
+   font-weight: 800;
+   text-align: center;
+   background-color: rgb(219, 40, 40);
+   box-shadow: 0px -4px rgb(191, 39, 40) inset;
+}
+
+.adittion{
+   height: 24.8%;
+   display: flex;
+   align-items: center;
+   justify-content: left;
+   border-bottom: 1px solid lightgray;
+}
+
+.additionLabel{
+   font-family: sans-serif;
+   font-size: 30px;
+   padding-left: 20px
+}
+
+.productStatistic{
+   display: flex;
+   margin-left: 15px;
+}
+
+.aba{
+   height: 24.8%;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   border-bottom: 1px solid lightgray;
+}
+
+.productStatistic.two{
+   border-bottom: none;
+}
+
+.item{
+   padding-top: 5px;
+   padding-left: 10px;
+   padding-bottom: 5px;
+   padding-right: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 6px;
+   margin-left: 5px;
+   border-right: 0px;
+   border-top: 0px;
+   border-bottom: 0px;
+   border-left: 0px;
+   font-size: 15px;
+   font-family: sans-serif;
+   color: rgb(101, 101, 101);
+   font-weight: 700;
+   background-color: rgb(232, 232, 232);
+}
+
+.item.two{
+   text-decoration: line-through;
+}
+
+.amountOfItem{
+   width: 30px;
+   height: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 25px;
+   margin-left: 5px;
+   border: none;
+   font-size: 15px;
+   font-family: sans-serif;
+   color: white;
+   font-weight: 700;
+   background-color: rgb(242, 113, 29);
+}
+
+.beige{
+   width: 200px;
+   position:fixed;
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+   bottom: -65px;
+   left: 50px;
+   transition: bottom 2s;
+   background-color: rgb(175, 1, 218);
+}
+
+.beige:hover{
+   transition: bottom 2s;
+   bottom: -15px;
+   background-color: rgb(77, 1, 218);
+}
+
+.beigeLabel{
+   font-size: 30px;
+   margin-left: 20px;
+   font-family: sans-serif;
+   color: white;
+   font-weight: 700;
+}
+
+.beigeLabel.one{
+   margin-bottom: 0;
+   font-size: 15px;
+   font-weight: 400;
+}
+
+.beigeLabel.two{
+   margin-top: 0;
+   font-size: 20px;
+   font-weight: 400;
+}
+
+.hiddenBeige{
+   width: 200px;
+   position:fixed;
+   border-top-left-radius: 6px;
+   border-top-right-radius: 6px;
+   bottom: -15px;
+   left: 50px;
+   border: 2px solid rgb(175, 1, 218);
+   visibility: hidden;
+}
+
+.tooltipSection {
+   padding-left: 10px;
+   padding-right: 10px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border-radius: 8px;
+   bottom: -60px;
+   right: -80px;
+   position: absolute;
+   white-space: nowrap;
+    background-color: rgb(175, 1, 218);
+   z-index: 100;
+   opacity: 0;
+   pointer-events: none;
+   transition: opacity 1s;
+ }
+
+ .tooltipSection.one{
+   bottom: -40px;
+   right: 15px;
+ }
+
+ .tooltipSection.two{
+   bottom: -30px;
+   right: -2px;
+ }
+
+ .tooltipSection.three{
+   bottom: -40px;
+   right: -37px;
+ }
+ 
+ label[data-tooltip] {
+   color: white;
+   font-weight: 500;
+   font-size: 20px;
+ }
+
+@media print {
+   .beige {
+     visibility: hidden;
+   }
+ 
+   .hiddenBeige {
+     visibility: visible;
+   }
+ }
+
+ @media (min-width: 0px) and (max-width: 500px) {
+   .fullForm {
+     flex-wrap: wrap;
+     height: 800px;
+   }
+   
+   .operationForm {
+     width: 100%;
+   }
+ 
+   .statistic {
+     width: 100%;
+     height: 350px;
+     margin-left: 0;
+   }
+ }
