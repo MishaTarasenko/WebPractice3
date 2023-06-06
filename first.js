@@ -3,6 +3,12 @@ const statistic = document.querySelector(".statistic");
 const addButton = document.querySelector(".addButton");
 
 addButton.addEventListener("click", addProduct);
+const input = document.querySelector(".productInput");
+input.addEventListener("keydown", (event) => {
+   if(event.key == "Enter"){
+      addProduct();
+   }
+})
 
 
 function addProduct(){
@@ -25,12 +31,32 @@ function addProduct(){
       let minusButton = document.createElement("button");
       minusButton.setAttribute("class", "minusButton disabled");
       minusButton.textContent = "–";
+
+      let tooltipSectionMinus = document.createElement("section");
+      tooltipSectionMinus.setAttribute("class", "tooltipSection");
+      let labelTooltipMinus = document.createElement("label");
+      labelTooltipMinus.setAttribute("data-tooltip", "tooltip");
+      labelTooltipMinus.setAttribute("for", "tooltip");
+      labelTooltipMinus.textContent = "Зменшити кількість";
+      tooltipSectionMinus.appendChild(labelTooltipMinus);
+      minusButton.appendChild(tooltipSectionMinus);
+
       let blockOfAmount = document.createElement("section");
       blockOfAmount.setAttribute("class", "blockOfAmount");
       blockOfAmount.textContent = "1";
       let plusButton = document.createElement("button");
       plusButton.setAttribute("class", "plusButton");
       plusButton.textContent = "+";
+
+      let tooltipSectionPlus = document.createElement("section");
+      tooltipSectionPlus.setAttribute("class", "tooltipSection");
+      let labelTooltipPlus = document.createElement("label");
+      labelTooltipPlus.setAttribute("data-tooltip", "tooltip");
+      labelTooltipPlus.setAttribute("for", "tooltip");
+      labelTooltipPlus.textContent = "Збільшити кількість";
+      tooltipSectionPlus.appendChild(labelTooltipPlus);
+      plusButton.appendChild(tooltipSectionPlus);
+
       buttonGroupOne.appendChild(minusButton);
       buttonGroupOne.appendChild(blockOfAmount);
       buttonGroupOne.appendChild(plusButton);
@@ -41,9 +67,30 @@ function addProduct(){
       let buyButton = document.createElement("button");
       buyButton.setAttribute("class", "button");
       buyButton.textContent = "Куплено";
+
+      let tooltipSectionBuy = document.createElement("section");
+      tooltipSectionBuy.setAttribute("class", "tooltipSection buy");
+      let labelTooltipBuy = document.createElement("label");
+      labelTooltipBuy.setAttribute("data-tooltip", "tooltip");
+      labelTooltipBuy.setAttribute("for", "tooltip");
+      labelTooltipBuy.textContent = "Купити";
+      tooltipSectionBuy.appendChild(labelTooltipBuy);
+      buyButton.appendChild(tooltipSectionBuy);
+
       let cancelButton = document.createElement("button");
       cancelButton.setAttribute("class", "cancelButton");
       cancelButton.textContent = "\u2716";
+
+      let tooltipSectionCancel = document.createElement("section");
+      tooltipSectionCancel.setAttribute("class", "tooltipSection cancel");
+      let labelTooltipCancel = document.createElement("label");
+      labelTooltipCancel.setAttribute("data-tooltip", "tooltip");
+      labelTooltipCancel.setAttribute("for", "tooltip");
+      labelTooltipCancel.textContent = "Відмінити";
+      tooltipSectionCancel.appendChild(labelTooltipCancel);
+      cancelButton.appendChild(tooltipSectionCancel);
+
+
       buttonBlockTwo.appendChild(buyButton);
       buttonBlockTwo.appendChild(cancelButton);
       product.appendChild(buttonBlockTwo);
@@ -71,6 +118,7 @@ function addProduct(){
 
    let productInput = document.getElementById("productName");
    productInput.value = "";
+   productInput.focus();
 }
 
 function checkName(productName){
@@ -110,10 +158,11 @@ const operationForm = document.querySelector(".operationForm");
 function minusButtonClicked(button){
    let blockOfButtons = button.parentNode;
    let blockOfAmount = blockOfButtons.querySelector(".blockOfAmount");
-   let amount = blockOfAmount.textContent;
+   let amount = parseInt(blockOfAmount.textContent, 10);
    if(amount > 1){
-      blockOfAmount.textContent = --amount;
-      if(amount - 1 == 1)
+      amount = amount - 1;
+      blockOfAmount.textContent = amount;
+      if(amount == 1)
          button.setAttribute("class" , "minusButton disabled");
    }
    let name = blockOfButtons.parentNode.querySelector(".label").textContent;
@@ -134,8 +183,9 @@ function minusButtonClicked(button){
 function plusButtonClicked(button){
    let blockOfButtons = button.parentNode;
    let blockOfAmount = blockOfButtons.querySelector(".blockOfAmount");
-   let amount = blockOfAmount.textContent;
-   blockOfAmount.textContent = ++amount;
+   let amount = parseInt(blockOfAmount.textContent, 10);
+   amount = amount + 1;
+   blockOfAmount.textContent = amount;
    if(amount > 1){
       let minusButton = blockOfButtons.querySelector(".minusButton");
       minusButton.setAttribute("class", "minusButton");
@@ -207,7 +257,7 @@ function labelClicked(button){
       }
    })
    nameOfProduct.appendChild(input);
-
+   input.focus();
 }
 
 function buyButtonClicked(button){
@@ -239,6 +289,16 @@ function buyButtonClicked(button){
    let buyButton = document.createElement("button");
    buyButton.setAttribute("class", "button bought");
    buyButton.textContent = " Не Куплено";
+
+   let tooltipSectionBought = document.createElement("section");
+   tooltipSectionBought.setAttribute("class", "tooltipSection bought");
+   let labelTooltipBought = document.createElement("label");
+   labelTooltipBought.setAttribute("data-tooltip", "tooltip");
+   labelTooltipBought.setAttribute("for", "tooltip");
+   labelTooltipBought.textContent = "Не куплено";
+   tooltipSectionBought.appendChild(labelTooltipBought);
+   buyButton.appendChild(tooltipSectionBought);
+
    buttonBlockTwo.appendChild(buyButton);
    product.appendChild(buttonBlockTwo);
 
@@ -293,12 +353,32 @@ function unpurchasedButtonClicked(button){
    else
       minusButton.setAttribute("class", "minusButton disabled");
    minusButton.textContent = "–";
+
+   let tooltipSectionMinus = document.createElement("section");
+   tooltipSectionMinus.setAttribute("class", "tooltipSection");
+   let labelTooltipMinus = document.createElement("label");
+   labelTooltipMinus.setAttribute("data-tooltip", "tooltip");
+   labelTooltipMinus.setAttribute("for", "tooltip");
+   labelTooltipMinus.textContent = "Зменшити кількість";
+   tooltipSectionMinus.appendChild(labelTooltipMinus);
+   minusButton.appendChild(tooltipSectionMinus);
+
    let blockOfAmount = document.createElement("section");
    blockOfAmount.setAttribute("class", "blockOfAmount");
    blockOfAmount.textContent = amount;
    let plusButton = document.createElement("button");
    plusButton.setAttribute("class", "plusButton");
    plusButton.textContent = "+";
+
+   let tooltipSectionPlus = document.createElement("section");
+   tooltipSectionPlus.setAttribute("class", "tooltipSection");
+   let labelTooltipPlus = document.createElement("label");
+   labelTooltipPlus.setAttribute("data-tooltip", "tooltip");
+   labelTooltipPlus.setAttribute("for", "tooltip");
+   labelTooltipPlus.textContent = "Збільшити кількість";
+   tooltipSectionPlus.appendChild(labelTooltipPlus);
+   plusButton.appendChild(tooltipSectionPlus);
+
    buttonGroupOne.appendChild(minusButton);
    buttonGroupOne.appendChild(blockOfAmount);
    buttonGroupOne.appendChild(plusButton);
@@ -309,9 +389,29 @@ function unpurchasedButtonClicked(button){
    let buyButton = document.createElement("button");
    buyButton.setAttribute("class", "button");
    buyButton.textContent = "Куплено";
+
+   let tooltipSectionBuy = document.createElement("section");
+      tooltipSectionBuy.setAttribute("class", "tooltipSection buy");
+      let labelTooltipBuy = document.createElement("label");
+      labelTooltipBuy.setAttribute("data-tooltip", "tooltip");
+      labelTooltipBuy.setAttribute("for", "tooltip");
+      labelTooltipBuy.textContent = "Купити";
+      tooltipSectionBuy.appendChild(labelTooltipBuy);
+      buyButton.appendChild(tooltipSectionBuy);
+
    let cancelButton = document.createElement("button");
    cancelButton.setAttribute("class", "cancelButton");
    cancelButton.textContent = "\u2716";
+
+   let tooltipSectionCancel = document.createElement("section");
+   tooltipSectionCancel.setAttribute("class", "tooltipSection cancel");
+   let labelTooltipCancel = document.createElement("label");
+   labelTooltipCancel.setAttribute("data-tooltip", "tooltip");
+   labelTooltipCancel.setAttribute("for", "tooltip");
+   labelTooltipCancel.textContent = "Відмінити";
+   tooltipSectionCancel.appendChild(labelTooltipCancel);
+   cancelButton.appendChild(tooltipSectionCancel);
+
    buttonBlockTwo.appendChild(buyButton);
    buttonBlockTwo.appendChild(cancelButton);
    product.appendChild(buttonBlockTwo);

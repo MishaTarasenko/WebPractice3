@@ -376,17 +376,17 @@
    transition: opacity 1s;
  }
 
- .tooltipSection.one{
+ .tooltipSection.buy{
    bottom: -40px;
    right: 15px;
  }
 
- .tooltipSection.two{
+ .tooltipSection.bought{
    bottom: -30px;
    right: -2px;
  }
 
- .tooltipSection.three{
+ .tooltipSection.cancel{
    bottom: -40px;
    right: -37px;
  }
