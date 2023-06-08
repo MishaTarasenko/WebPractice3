@@ -119,6 +119,7 @@ function addProduct(){
    let productInput = document.getElementById("productName");
    productInput.value = "";
    productInput.focus();
+   saveData();
 }
 
 function checkName(productName){
@@ -136,21 +137,27 @@ const operationForm = document.querySelector(".operationForm");
    switch(button.className){
       case "minusButton":
          minusButtonClicked(button);
+         saveData();
          break;
       case "plusButton":
          plusButtonClicked(button);
+         saveData();
          break;
       case "button":
          buyButtonClicked(button);
+         saveData();
          break;
       case "button bought":
          unpurchasedButtonClicked(button);
+         saveData();
          break;
       case "cancelButton":
          cancelButtonClicked(button);
+         saveData();
          break;
       case "label":
          labelClicked(button);
+         saveData();
          break;
    }
 });
@@ -476,7 +483,7 @@ function cancelButtonClicked(button){
 
 function saveData() {
    const data = getIncomeRows().map((row) => {
-     if (!row.querySelector(".button bought")) {
+     if (row.querySelector(".cancelButton")) {
        return {
          name: row.querySelector(".label").textContent.trim(),
          amount: row.querySelector(".blockOfAmount").textContent,
@@ -485,9 +492,9 @@ function saveData() {
        };
      } else {
        return {
-         name: row.querySelector(".label crossedOut").textContent.trim(),
-         amount: row.querySelector(".blockOfAmount").value,
-         buttonText: row.querySelector(".button bought").textContent.trim(),
+         name: row.querySelector(".label.crossedOut").textContent.trim(),
+         amount: row.querySelector(".blockOfAmount").textContent,
+         buttonText: row.querySelector(".button.bought").textContent.trim(),
          isSold: true,
        };
      }
@@ -508,6 +515,8 @@ function getProducts() {
      products = JSON.parse(localStorage.getItem("products"));
    }
    products.forEach(function (product) {
+      const newProduct = document.createElement("section");
+      newProduct.setAttribute("class", "product");
       let nameOfProduct = document.createElement("section");
       nameOfProduct.setAttribute("class", "nameOfProduct");
       let name = document.createElement("p");
@@ -516,9 +525,9 @@ function getProducts() {
       } else {
          name.setAttribute("class", "label crossedOut");
       }
-      name.textContent = productName;
+      name.textContent = product.name;
       nameOfProduct.appendChild(name);
-      product.appendChild(nameOfProduct);
+      newProduct.appendChild(nameOfProduct);
 
       let buttonGroupOne = document.createElement("section");
       buttonGroupOne.setAttribute("class", "buttonBlockOne");
@@ -561,8 +570,7 @@ function getProducts() {
       buttonGroupOne.appendChild(minusButton);
       buttonGroupOne.appendChild(blockOfAmount);
       buttonGroupOne.appendChild(plusButton);
-      product.appendChild(buttonGroupOne);
-
+      newProduct.appendChild(buttonGroupOne);
 
 
       let buttonBlockTwo = document.createElement("section");
@@ -595,15 +603,15 @@ function getProducts() {
 
       buttonBlockTwo.appendChild(buyButton);
       buttonBlockTwo.appendChild(cancelButton);
-      product.appendChild(buttonBlockTwo);
+      newProduct.appendChild(buttonBlockTwo);
    
-      products.appendChild(product);
      } else {
+
       let blockOfAmount = document.createElement("section");
       blockOfAmount.setAttribute("class", "blockOfAmount");
       blockOfAmount.textContent = product.amount;
  
-      buttonGroupOne.appendChild(amountInput);
+      buttonGroupOne.appendChild(blockOfAmount);
  
       let buttonBlockTwo = document.createElement("section");
       buttonBlockTwo.setAttribute("class", "buttonBlockTwo");
@@ -621,10 +629,11 @@ function getProducts() {
       buyButton.appendChild(tooltipSectionBought);
 
       buttonBlockTwo.appendChild(buyButton);
-      product.appendChild(buttonBlockTwo);
+      newProduct.appendChild(buttonGroupOne);
+      newProduct.appendChild(buttonBlockTwo);
      }
  
-     document.querySelector(".operations-div").appendChild(newProduct);
+     document.querySelector(".products").appendChild(newProduct);
  
      if (product.isSold) {
       let productStatisticBought = statistic.querySelector(".productStatistic.bought");
@@ -639,6 +648,7 @@ function getProducts() {
 
       boughtItem.appendChild(itemName);
       boughtItem.appendChild(amountOfItem);
+      productStatisticBought.appendChild(boughtItem);
      } else {
       let productStatistic = statistic.querySelector(".productStatistic");
       let item = document.createElement("section");
@@ -656,8 +666,7 @@ function getProducts() {
       productStatistic.appendChild(item);
      }
    });
-   //allAvailiableProduct = document.querySelectorAll(".products");
-   //fillWithDefaultValues();
  }
+
  
  document.addEventListener("DOMContentLoaded", getProducts);
