@@ -508,13 +508,149 @@ function saveData() {
  }
 
 function getProducts() {
-   let products;
-   if (localStorage.getItem("products") === null) {
-     products = [];
+   if (localStorage.getItem("products") == "[]") {
+      var newLineOne = document.createElement("section");
+      newLineOne.setAttribute("class", "product")
+      newLineOne.innerHTML = `
+      <section class="nameOfProduct">
+         <p class="label crossedOut">Помідори</p>
+      </section>
+      <section class="buttonBlockOne">
+         <section class="blockOfAmount">1</section>
+      </section>
+      <section class="buttonBlockTwo">
+         <button type="button" class="button bought">
+            Не куплено
+            <section class="tooltipSection bought">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Не куплено
+               </label>
+            </section>
+         </button>
+      </section>
+      `;
+      var newLineTwo = document.createElement("section");
+      newLineTwo.setAttribute("class", "product")
+      newLineTwo.innerHTML = `
+      <section class="nameOfProduct">
+         <p class="label">Печиво</p>
+      </section>
+      <section class="buttonBlockOne">
+         <button type="button" class="minusButton">
+            –
+            <section class="tooltipSection">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Зменшити кількість
+               </label>
+            </section>
+         </button>
+         <section class="blockOfAmount">2</section>
+         <button type="button" class="plusButton">
+            +
+            <section class="tooltipSection">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                  Збільшити кількість
+               </label>
+            </section>
+         </button>
+      </section>
+      <section class="buttonBlockTwo">
+         <button type="button" class="button">
+            Куплено
+            <section class="tooltipSection buy">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Куплено
+               </label>
+            </section>
+         </button>
+         <button type="button" class="cancelButton">
+            &#10006;
+            <section class="tooltipSection cancel">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Відмінити
+               </label>
+            </section>
+         </button>
+      </section>
+      `;
+      var newLineThree = document.createElement("section");
+      newLineThree.setAttribute("class", "product three")
+      newLineThree.innerHTML = `
+      <section class="nameOfProduct">
+         <p class="label">Сир</p>
+      </section>
+      <section class="buttonBlockOne">
+         <button type="button" class="minusButton disabled">
+            –
+            <section class="tooltipSection">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Зменшити кількість
+               </label>
+            </section>
+         </button>
+         <section class="blockOfAmount">1</section>
+         <button type="button" class="plusButton">
+            +
+            <section class="tooltipSection">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Збільшити кількість
+               </label>
+            </section>
+         </button>
+      </section>
+      <section class="buttonBlockTwo">
+         <button type="button" class="button">
+            Куплено
+            <section class="tooltipSection two">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Куплено
+               </label>
+            </section>
+         </button>
+         <button type="button" class="cancelButton">
+            &#10006;
+            <section class="tooltipSection three">
+               <label data-tooltip="tooltip" 
+                 for="tooltip">
+                 Відмінити
+               </label>
+            </section>
+         </button>
+      </section>
+      `;
+      products.appendChild(newLineOne);
+      products.appendChild(newLineTwo);
+      products.appendChild(newLineThree);
+
+      document.querySelector(".productStatistic").innerHTML = `
+      <section class="item">
+                  <article class="itemName">Печиво</article>
+                  <section class="amountOfItem">2</section>
+               </section>
+               <section class="item">
+                  <article class="itemName">Сир</article>
+                  <section class="amountOfItem">1</section>
+               </section>
+      `;
+
+      document.querySelector(".productStatistic.bought").innerHTML = `
+      <section class="item bought">
+         <article class="itemName">Помідори</article>
+         <section class="amountOfItem bought">2</section>
+      </section>
+      `;
    } else {
+      let products;
      products = JSON.parse(localStorage.getItem("products"));
-   }
-   products.forEach(function (product) {
+     products.forEach(function (product) {
       const newProduct = document.createElement("section");
       newProduct.setAttribute("class", "product");
       let nameOfProduct = document.createElement("section");
@@ -666,6 +802,7 @@ function getProducts() {
       productStatistic.appendChild(item);
      }
    });
+   }
  }
 
  
