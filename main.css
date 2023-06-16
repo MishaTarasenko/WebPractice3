@@ -407,7 +407,7 @@
    }
  }
 
- @media (min-width: 0px) and (max-width: 500px) {
+ @media (min-width: 0px) and (max-width: 750px) {
    .fullForm {
      flex-wrap: wrap;
      height: 800px;

@@ -14,7 +14,7 @@ input.addEventListener("keydown", (event) => {
 function addProduct(){
    let productName = document.getElementById("productName").value;
 
-   if(checkName(productName) == true){
+   if(checkName(productName) == true && productName != ""){
       let product = document.createElement("section");
       product.setAttribute("class", "product");
    
