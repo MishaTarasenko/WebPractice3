@@ -487,14 +487,12 @@ function saveData() {
        return {
          name: row.querySelector(".label").textContent.trim(),
          amount: row.querySelector(".blockOfAmount").textContent,
-         buttonText: row.querySelector(".button").textContent.trim(),
          isSold: false,
        };
      } else {
        return {
          name: row.querySelector(".label.crossedOut").textContent.trim(),
          amount: row.querySelector(".blockOfAmount").textContent,
-         buttonText: row.querySelector(".button.bought").textContent.trim(),
          isSold: true,
        };
      }
