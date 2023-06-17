@@ -428,7 +428,7 @@ function unpurchasedButtonClicked(button){
    
    for(let i = 0; i < items.length; i++){
       let itemName = items[i].querySelector(".itemName");
-      if(name ===itemName.textContent){
+      if(name === itemName.textContent){
          productStatisticBought.removeChild(items[i]);
 
          let productStatistic = statistic.querySelector(".productStatistic");
